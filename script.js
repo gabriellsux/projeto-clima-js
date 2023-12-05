@@ -7,7 +7,7 @@ document.querySelector('.busca').addEventListener('submit', async (event) =>{
         clearInfo();
         showWarning('Carregando...');
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=9cffd38ea43bbf2bc472c8cfcba06120&units=metric&lang=pt_br`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=b1399564616cce4ff350e9ff83c7312a&units=metric&lang=pt_br`;
 
         let response = await fetch(url);
         let json = await response.json();
@@ -19,7 +19,7 @@ document.querySelector('.busca').addEventListener('submit', async (event) =>{
                 temp: json.main.temp,
                 tempIcon: json.weather[0].icon,
                 windSpeed: json.wind.speed,
-                windDeg: json.wing.deg,
+                windAngle: json.wind.deg
             });
         } else {
             clearInfo();
@@ -43,7 +43,7 @@ function showInfo(json) {
     document.querySelector('.tempInfo').innerHTML = `${json.temp} <sup>ºC</sup>`;
     document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>km/h</span>`;
 
-    document.querySelector('.temp img').setAttribute('.src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
+    document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
 
     document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle-90}deg)`;
 
