@@ -19,7 +19,7 @@ document.querySelector('.busca').addEventListener('submit', async (event) =>{
                 temp: json.main.temp,
                 tempIcon: json.weather[0].icon,
                 windSpeed: json.wind.speed,
-                windAngle: json.wing.deg,
+                windDeg: json.wing.deg,
             });
         } else {
             clearInfo();
