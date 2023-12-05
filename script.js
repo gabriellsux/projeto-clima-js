@@ -19,17 +19,22 @@ document.querySelector('.busca').addEventListener('submit', async (event) =>{
                 temp: json.main.temp,
                 tempIcon: json.weather[0].icon,
                 windSpeed: json.wind.speed,
-                windAngle: json.wing.deg
+                windAngle: json.wing.deg,
             });
         } else {
             clearInfo();
-            showWarning('Não encontramos esta localização.');
+            showWarning('Não encontramos esta localização!');
         }
     } else {
         clearInfo();
     }
 
 });
+
+function clearInfo() {
+    showWarning('');
+    document.querySelector('.resultado').style.display = 'none';
+}
 
 function showInfo(json) {
     showWarning('');
@@ -43,11 +48,6 @@ function showInfo(json) {
     document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle-90}deg)`;
 
     document.querySelector('.resultado').style.display = 'block';
-}
-
-function clearInfo() {
-    showWarning('');
-    document.querySelector('.resultado').style.display = 'none';
 }
 
 function showWarning(msg) {
